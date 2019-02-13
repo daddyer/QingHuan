@@ -17,21 +17,16 @@ export default new Router({
       path: '/dir/:channl',
       name: 'dir',
       component: () => import('../views/Dir.vue')
-      // beforeEnter: (to, from, next) => {
-      //   // ...
-      //   // console.log(from)
-      //   next()
-      // }
     },
     {
       path: '/:channl/:id',
       name: 'player',
       component: () => import('../views/Player.vue')
     },
-    // {
-    //   path: '/*',
-    //   name: 'notfound',
-    //   component: () => import('../views/NotFound.vue')
-    // }
+    {
+      path: '/*',
+      name: 'notfound',
+      component: () => import('../views/NotFound.vue')
+    }
   ]
 })

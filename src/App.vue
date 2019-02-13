@@ -2,10 +2,10 @@
   <div id="app">
     <appHeader/>
     <div class="main">
-      <keep-alive v-if="!loading">
+      <div v-if="!loading">
       <!-- <keep-alive> -->
         <router-view></router-view>
-      </keep-alive>
+      </div>
       <div class="homeLoading" v-else>
         <img src="https://ws1.sinaimg.cn/large/b7da53dbgy1fy1vo8432ig206o0503z0.gif">
       </div>
@@ -24,10 +24,6 @@ export default {
   components: {
     'appHeader': Header,
     'appFooter': Footer
-  },
-  created(){
-    // 获取主页数据
-    this.$api.get_home_data()
   },
   mounted(){
     // 提示广告

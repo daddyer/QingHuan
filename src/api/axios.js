@@ -7,11 +7,15 @@ const die = () => {
   return false
 }
 
-// 超时时间
-axios.defaults.timeout = 20000;
+const instance = axios.create({
+  timeout: 10000,
+  headers: {
+    'Accept': 'application/json; charset=utf-8'
+  }
+})
 
 // http请求拦截器
-axios.interceptors.request.use(
+instance.interceptors.request.use(
   c => {
     store.dispatch('loading')
     LoadingBar.start()
@@ -25,10 +29,8 @@ axios.interceptors.request.use(
 )
 
 // Response响应拦截器
-axios.interceptors.response.use(
+instance.interceptors.response.use(
   r => {
-    // 异步 多等 1s 不然没提交到数据报错
-    setTimeout(() => { LoadingBar.finish(); store.dispatch('loaded')},1000);
     return r.data
   }, 
   error => {
@@ -37,4 +39,4 @@ axios.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-export default axios
+export default instance

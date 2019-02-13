@@ -1,6 +1,6 @@
 <template>
   <div class="player">
-    {{id}}
+    {{info}}
   </div>
 </template>
 
@@ -13,10 +13,9 @@ export default {
       time: 0
     }
   },
-  mounted(){
-    // console.log(this.$api)
-    this.id = `${this.$route.params.channl}/${this.$route.params.id }`
-    this.$api.get_cover_data(`${this.$route.params.channl}/${this.$route.params.id }`)
+  created(){
+    // console.log(Cover)
+    // this.$api.get_cover_data(`${this.$route.params.channl}/${this.$route.params.id }`)
   },
   computed:{
     ...mapState({
@@ -27,3 +26,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.player{
+  max-width: 90%;
+  margin: 0 auto;
+}
+</style>

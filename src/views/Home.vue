@@ -33,7 +33,8 @@ export default {
     VarietyRe,
     AnimationRe,
     Rank
-  },
+  }, 
+  // 首页(初始为加载中) -> App.vue -> 显示加载 ->获取数据 -> 修改加载状态     其他组件依赖于 App.vue  SO 死循环加载？？？？
   computed: {
     ...mapState({
       'tv': state => state.home.tv,

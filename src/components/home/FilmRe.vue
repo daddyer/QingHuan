@@ -44,21 +44,6 @@ export default {
   outline: 1px solid #ccc;
   cursor: pointer;
 }
-/* .item:hover .icon{
-  display: block;
-}
-.item:hover .cover{
-  opacity: .7;
-} */
-.item .icon{
-  display: none;
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 55px;
-}
-.item .icon img{
-  max-width: 64px;
-}
 .item .cover {
   max-height: 80%;
 }

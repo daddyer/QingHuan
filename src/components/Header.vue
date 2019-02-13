@@ -16,7 +16,7 @@ export default {
   name: 'Header',
   data(){
     return {
-      name:'清欢影视',
+      name:'腾讯视频',
       menu:[
         {name: '首页', path: '/'},
         {name: '电影', path: '/dir/dianying'},
@@ -27,10 +27,29 @@ export default {
       ]
     }
   },
+  beforeCreate(){
+    console.log(`beforeCreate`)
+    if(this.$route.path == '/'){
+      this.$api.get_home_data()
+    }else{
+      this.$api.get_channl_data(this.$route.params.channl)
+    }
+  },
+  beforeUpdate(){
+    console.log(`beforeUpdate`)
+    if(this.$route.path == '/'){
+      this.$api.get_home_data()
+    }else{
+      this.$api.get_channl_data(this.$route.params.channl)
+    }
+  },
   methods: {
     go(index){
       this.$router.push({ path: this.menu[index].path })
     },
+    update(){
+      // console.log(this.sele)
+    }
   },
   computed:{
     sele(){
@@ -49,6 +68,7 @@ export default {
         t = t.name  + ' | 清欢影视'
       }
       document.title = t
+      this.update()
     }
   }
 }
